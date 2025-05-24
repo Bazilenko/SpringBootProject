@@ -39,13 +39,6 @@
                 padding: 20px;
             }
 
-            header {
-                background-color: var(--secondary-color);
-                color: var(--light-text);
-                padding: 20px;
-                border-radius: 10px 10px 0 0;
-                margin-bottom: 30px;
-            }
 
             h1 {
                 font-size: 2.5rem;
@@ -63,7 +56,7 @@
 
             .car-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
                 gap: 20px;
                 margin-bottom: 30px;
             }
@@ -82,16 +75,19 @@
             }
 
             .car-image {
-                height: 180px;
-                background-color: #e0e0e0;
+                width: auto;
+                height: 200px; /* або інше фіксоване значення */
                 display: flex;
-                align-items: center;
-                justify-content: center;
+                justify-content: center; /* по горизонталі */
+                align-items: center;     /* по вертикалі */
+                overflow: hidden;
+                background-color: #f0f0f0; /* фон, якщо зображення не заповнює весь div */
             }
 
-            .car-image svg {
-                width: 100px;
-                height: 100px;
+            .car-image img {
+                width: auto;
+                max-height: 100%;
+                object-fit: contain; /* або "cover" для повного заповнення */
                 color: #9e9e9e;
             }
 
@@ -153,33 +149,24 @@
                 margin-right: 5px;
             }
 
-            footer {
-                margin-top: 40px;
-                text-align: center;
-                color: #6c757d;
-                font-size: 0.9rem;
-            }
+
+
         </style>
     </head>
     <body>
+    @template.layout.header()
     <div class="container">
-        <header>
-            <h1>Каталог автомобілів</h1>
-            <p class="subtitle">Знайдіть автомобіль своєї мрії</p>
-        </header>
 
         <div class="car-grid">
             @for (Car car : cars)
                 <div class="car-card">
                     <div class="car-image">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L17 10h-1.1L14 5c-.2-.7-.9-1.1-1.5-1H5c-.5 0-.9.4-.9.9l-.8 8c-.1.5.3 1 .8 1.1H4"></path>
-                            <circle cx="7" cy="17" r="2"></circle>
-                            <path d="M15 17a2 2 0 1 0 4 0 2 2 0 1 0-4 0z"></path>
-                        </svg>
+                        <div class="car-image">
+                            <img src='/${car.getImage()}' alt="Car image" class="car-photo"/>
+                        </div>
                     </div>
                     <div class="car-details">
-                        <div class="car-brand">${car.getBrand()}</div>
+                        <div class="car-brand">${car.getBrand().getName()}</div>
                         <div class="car-model">${car.getModel()}</div>
                         <div class="car-price">${car.getPrice()} USD</div>
 
@@ -191,6 +178,7 @@
                         @else
                             <div class="class">High class</div>
                         @endif
+                        <a href="/details/${car.getId()}">Характеристики</a>
                         
                     </div>
                 </div>
@@ -201,9 +189,7 @@
             <span class="back-icon">←</span> Повернутися на головну
         </a>
 
-        <footer>
-            <p>&copy; 2025 Автосалон. Всі права захищені.</p>
-        </footer>
     </div>
+    @template.layout.footer()
     </body>
     </html>

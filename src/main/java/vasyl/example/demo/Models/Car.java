@@ -1,34 +1,50 @@
 package vasyl.example.demo.Models;
 
-import java.util.Arrays;
+import jakarta.persistence.*;
+import lombok.*;
+import vasyl.example.demo.data.Brand;
+import vasyl.example.demo.data.Engine;
 
+@Entity
+@Table(name = "car")
+@Getter
+@Setter
+@EqualsAndHashCode
 public class Car {
-    String model;
-    String brand;
-    double price;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Car(String model, String brand, double price){
-        this.model = model;
-        this.brand = brand;
-        this.price = price;
-    }
+    @ManyToOne
+    @JoinColumn(name = "engine_id", nullable = false)
+    private Engine engine;
 
-    public double getPrice() {
-        return price;
-    }
+    @ManyToOne
+    @JoinColumn(name = "brand_id", nullable = false)
+    private Brand brand;
 
-    public String getBrand() {
-        return brand;
-    }
+    @Column(name = "vin", unique = true)
+    private String vin;
 
-    public String getModel() {
-        return model;
-    }
+    @Column(name = "model")
+    private String model;
 
-    @Override
-    public String toString(){
-        return Arrays.toString((this.brand +
-                this.model +
-                this.price).split(" "));
-    }
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "consumption")
+    private Double consumption;
+
+    @Column(name = "gear_box")
+    private String gearBox;
+
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "year")
+    private Integer year;
+
+    @Column(name = "image")
+    private String image;
+
 }
