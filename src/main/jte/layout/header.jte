@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <style>
         :root {
             --primary-color: #3498db;
@@ -41,6 +33,7 @@
             margin: 0 auto;
             padding: 0 20px;
             height: var(--header-height);
+
         }
 
         .logo {
@@ -56,7 +49,10 @@
         .logo-icon {
             color: var(--accent-color);
             font-size: 1.8rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
         }
+
 
         nav {
             display: flex;
@@ -99,8 +95,7 @@
 
 
     </style>
-</head>
-<body>
+
 
 <header>
     <div class="header-container">
@@ -116,6 +111,19 @@
         </nav>
     </div>
 </header>
+    <script>
+        // Highlight active navigation item
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
 
-</body>
-</html>
+            if (currentPath === '/') {
+                document.getElementById('nav-home').classList.add('active');
+            } else if (currentPath.includes('/cars')) {
+                document.getElementById('nav-cars').classList.add('active');
+            } else if (currentPath.includes('/reviews')) {
+                document.getElementById('nav-reviews').classList.add('active');
+            } else if (currentPath.includes('/contacts')) {
+                document.getElementById('nav-contacts').classList.add('active');
+            }
+        });
+    </script>

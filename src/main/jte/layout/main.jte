@@ -1,6 +1,7 @@
 @param gg.jte.Content content
 @param String title = "Автосалон"
 
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -35,7 +36,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
@@ -135,21 +135,5 @@
 </main>
 
 
-<script>
-    // Highlight active navigation item
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentPath = window.location.pathname;
-
-        if (currentPath === '/') {
-            document.getElementById('nav-home').classList.add('active');
-        } else if (currentPath.includes('/cars')) {
-            document.getElementById('nav-cars').classList.add('active');
-        } else if (currentPath.includes('/reviews')) {
-            document.getElementById('nav-reviews').classList.add('active');
-        } else if (currentPath.includes('/contacts')) {
-            document.getElementById('nav-contacts').classList.add('active');
-        }
-    });
-</script>
 </body>
 </html>
