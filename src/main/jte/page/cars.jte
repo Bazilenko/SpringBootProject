@@ -97,9 +97,9 @@
             }
 
             .car-image img {
-                width: auto;
+                width: 100vh;
                 max-height: 100%;
-                object-fit: contain; /* або "cover" для повного заповнення */
+                object-fit: cover; /* або "cover" для повного заповнення */
                 color: #9e9e9e;
             }
 

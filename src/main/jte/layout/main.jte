@@ -12,11 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        html, body {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+
         .wrapper {
             flex: 1;
         }
@@ -33,10 +29,6 @@
             --footer-height: 80px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-        }
 
         body {
             font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
@@ -130,9 +122,9 @@
 </head>
 <body>
 
-<main>
+
     <div class="wrapper">${content}</div>
-</main>
+
 
 
 </body>

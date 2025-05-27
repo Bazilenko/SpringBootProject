@@ -1,14 +1,11 @@
 <style>
-.hero-section {
- margin-bottom: 40px;
-}
+
 
 .hero-container {
     position: relative;
     width: 100%;
-    height: 600px;;
+    height: 650px;
     overflow: hidden;
-    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
@@ -17,7 +14,7 @@ width: 100%;
 height: 100%;
 object-fit: cover;
 display: block;
-border-radius: 12px;
+
 }
 
 .hero-overlay {
@@ -49,7 +46,10 @@ font-size: 1.2rem;
 @template.layout.header()
 @template.layout.main(content = @`
         <div class="hero-container">
-            <img src='/images/cars/autosalon.jpg' alt="Автосалон" class="hero-image">
+            <div class="hero-image">
+                <img src='/images/cars/autosalon.jpg' alt="Автосалон" class="hero-image">
+            </div>
+
             <div class="hero-overlay">
                 <h1>Ласкаво просимо до Автосалону Преміум</h1>
                 <p>Сьогодні ${date.toString()}</p>
