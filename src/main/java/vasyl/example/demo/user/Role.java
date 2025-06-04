@@ -1,4 +1,4 @@
-package vasyl.example.demo.security;
+package vasyl.example.demo.user;
 
 public enum Role {
     ADMIN,

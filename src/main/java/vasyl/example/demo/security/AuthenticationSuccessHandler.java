@@ -5,19 +5,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import vasyl.example.demo.user.Role;
 
 import java.io.IOException;
 
 public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-                                        Authentication authentication) throws ServletException, IOException{
+                                        Authentication authentication) throws ServletException, IOException {
         boolean isAdmin = authentication.getAuthorities().stream()
                 .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().contains(Role.ADMIN.name()));
-        if (isAdmin)
+        if (isAdmin) {
             setDefaultTargetUrl("/admin");
-        else
+        } else {
             setDefaultTargetUrl("/client");
+        }
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }
