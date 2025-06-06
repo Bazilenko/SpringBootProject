@@ -351,7 +351,7 @@
     <body>
     <div class="add-review-section">
         <div class="add-review-title">Залишити відгук</div>
-        <form id="review-form" class="review-form"  method="post" action="/psot/add">
+        <form id="review-form" class="review-form"  method="post" action="/post/add">
             <div class="form-group">
                 <label class="form-label" for="rating">Оцінка:</label>
                 <div class="rating-input">
