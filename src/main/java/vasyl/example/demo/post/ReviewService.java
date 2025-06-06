@@ -32,4 +32,16 @@ public class ReviewService {
         review.setUser(userCars);
         return reviewRepository.save(review);
     }
+
+    public Review editReview(EditReviewRequest editReviewRequest){
+        var oldReview = reviewRepository.findById(editReviewRequest.id());
+        var review = oldReview.get();
+        review.setComment(editReviewRequest.comment());
+        review.setRating(editReviewRequest.rating());
+        return reviewRepository.save(review);
+    }
+
+    public void deleteReview(DeleteReviewRequest deleteReviewRequest){
+        reviewRepository.deleteById(deleteReviewRequest.id());
+    }
 }

@@ -28,6 +28,47 @@
                 margin: 0 auto;
                 padding: 20px;
             }
+            .sorting-buttons {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                padding: 15px;
+                border-radius: 12px;
+                margin: 20px 0;
+                border-left: 5px solid #3498db;
+            }
+
+            .sort-title {
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 10px;
+                font-size: 1.1rem;
+            }
+
+            .sort-options {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .sort-btn {
+                background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+                color: white;
+                padding: 10px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+            }
+
+            .sort-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            /* Highlight the current sorting option */
+            .sort-btn.active {
+                background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+                font-weight: bold;
+            }
 
             .back-btn {
                 background: rgba(255,255,255,0.2);
@@ -384,6 +425,13 @@
                     </div>
                 @endif
             </div>
+        <div class="sorting-buttons">
+            <div class="sort-title">Сортування:</div>
+            <div class="sort-options">
+                <a href="/reviews/asc" class="sort-btn">За зростанням рейтингу</a>
+                <a href="/reviews/desc" class="sort-btn">За спаданням рейтингу</a>
+            </div>
+        </div>
 
 
 
