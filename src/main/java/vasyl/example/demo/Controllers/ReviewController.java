@@ -9,37 +9,29 @@ import org.springframework.web.bind.annotation.*;
 import vasyl.example.demo.Repositories.ReviewRepository;
 import vasyl.example.demo.data.Review;
 import vasyl.example.demo.data.UserCars;
+import vasyl.example.demo.post.ReviewRequest;
+import vasyl.example.demo.post.ReviewService;
 import vasyl.example.demo.user.UserCarsRepository;
 
 @Controller
 public class ReviewController {
     private ReviewRepository reviewRepository;
-    private UserCarsRepository userCarsRepository;
+    private ReviewService reviewService;
 
-    public ReviewController(ReviewRepository reviewRepository, UserCarsRepository userCarsRepository) {
+    public ReviewController(ReviewRepository reviewRepository, ReviewService reviewService) {
         this.reviewRepository = reviewRepository;
-        this.userCarsRepository = userCarsRepository;
+        this.reviewService = reviewService;
     }
     @GetMapping("/reviews")
     public String showReviews(Model model){
         var reviews = reviewRepository.findAll();
-        for(Review review : reviews)
-        System.out.println(review.getUser());
         model.addAttribute( "reviews", reviews);
         return "page/reviews";
     }
 
-    @PostMapping("reviews/add")
-    public String addReview(@RequestParam int rating,
-                            @RequestParam String comment){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        UserCars userCars = userCarsRepository.findByUserName(username).orElse(null);
-        Review review = new Review();
-        review.setComment(comment);
-        review.setRating(rating);
-        review.setUser(userCars);
-        reviewRepository.save(review);
+    @PostMapping("post/add")
+    public String addReview(@ModelAttribute ReviewRequest newReview){
+        reviewService.createNewReview(newReview);
         return "redirect:/reviews";
     }
 
