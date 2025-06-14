@@ -1,5 +1,7 @@
 package vasyl.example.demo.Controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +23,10 @@ public class ReviewController {
     @GetMapping("/reviews")
     public String showReviews(Model model){
         var reviews = reviewRepository.findAll();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
         model.addAttribute( "reviews", reviews);
+        model.addAttribute("name", name);
         return "page/reviews";
     }
 
@@ -46,7 +51,7 @@ public class ReviewController {
         return "redirect:/reviews";
     }
 
-    @PostMapping("/post/edit")
+    @PostMapping("/post/edit/")
     public String editReview(@ModelAttribute EditReviewRequest editReviewRequest){
         reviewService.editReview(editReviewRequest);
         return "redirect:/reviews";
