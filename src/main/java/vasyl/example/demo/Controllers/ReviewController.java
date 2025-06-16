@@ -51,7 +51,7 @@ public class ReviewController {
         return "redirect:/reviews";
     }
 
-    @PostMapping("/post/edit/")
+    @PostMapping("/post/edit")
     public String editReview(@ModelAttribute EditReviewRequest editReviewRequest){
         reviewService.editReview(editReviewRequest);
         return "redirect:/reviews";

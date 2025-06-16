@@ -549,7 +549,11 @@
                     </div>
                     <div class="review-rating">
                         @for(int i = 1; i <= 5; i++)
+                            @if(i <= review.getRating())
                                 <span class="review-star">★</span>
+                            @else
+                                <span class="review-star empty">★</span>
+                            @endif
                         @endfor
                     </div>
                     <div class="review-comment">${review.getComment()}</div>
