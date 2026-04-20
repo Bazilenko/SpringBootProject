@@ -1,0 +1,6 @@
+CREATE TABLE review(
+    id SERIAL PRIMARY KEY,
+    comment TEXT,
+    rating INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

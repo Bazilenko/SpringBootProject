@@ -4,18 +4,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import vasyl.example.demo.Models.Car;
 import vasyl.example.demo.Repositories.CarRepository;
+import vasyl.example.demo.Repositories.EngineRepository;
+import vasyl.example.demo.data.Engine;
 
 import java.util.List;
 
 @Controller
 public class CarController {
     private final CarRepository carRepository;
+    private final EngineRepository engineRepository;
 
-    public CarController(CarRepository carRepository) {
+    public CarController(CarRepository carRepository, EngineRepository engineRepository) {
         this.carRepository = carRepository;
+        this.engineRepository = engineRepository;
     }
 
     @GetMapping(path = "/")
@@ -38,5 +41,8 @@ public class CarController {
         model.addAttribute("car", car);
         return "page/details";
     }
+
+
+
 
 }

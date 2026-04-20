@@ -8,6 +8,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
         <title>Автомобілі - Автосалон</title>
         <style>
             :root {
@@ -18,19 +22,27 @@
                 --dark-text: #333;
                 --light-text: #fff;
             }
-
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
+            html, body {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .wrapper {
+                flex: 1;
+            }
+
 
             body {
                 font-family: 'Roboto', 'Arial', sans-serif;
                 line-height: 1.6;
                 color: var(--dark-text);
                 background-color: var(--light-bg);
-                padding: 20px;
+                padding: 0px;
             }
 
             .container {
@@ -85,9 +97,9 @@
             }
 
             .car-image img {
-                width: auto;
+                width: 100vh;
                 max-height: 100%;
-                object-fit: contain; /* або "cover" для повного заповнення */
+                object-fit: cover; /* або "cover" для повного заповнення */
                 color: #9e9e9e;
             }
 
@@ -155,8 +167,9 @@
     </head>
     <body>
     @template.layout.header()
+    <main>
+        <div class="wrapper">
     <div class="container">
-
         <div class="car-grid">
             @for (Car car : cars)
                 <div class="car-card">
@@ -188,8 +201,9 @@
         <a href="/" class="back-link">
             <span class="back-icon">←</span> Повернутися на головну
         </a>
-
     </div>
+        </div>
+    </main>
     @template.layout.footer()
     </body>
     </html>
